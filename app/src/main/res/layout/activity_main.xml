@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:id="@+id/mainLayout">
+    android:id="@+id/mainLayout"
+    android:layout_marginLeft="5dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,7 +21,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Nhập tên của bạn vào đây"
-        android:text="" />
+        android:text=""
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -35,7 +37,8 @@
         android:ems="10"
         android:inputType="text"
         android:hint="Nhập ngày sinh của bạn vào đây"
-        android:text="" />
+        android:text=""
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -75,31 +78,36 @@
         android:id="@+id/checkBox1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xem phim" />
+        android:text="Xem phim"
+        android:layout_marginLeft="10dp"/>
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nghe nhạc" />
+        android:text="Nghe nhạc"
+        android:layout_marginLeft="10dp"/>
 
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đi cafe với bạn bè" />
+        android:text="Đi cafe với bạn bè"
+        android:layout_marginLeft="10dp"/>
 
     <CheckBox
         android:id="@+id/checkBox4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ở nhà một mình" />
+        android:text="Ở nhà một mình"
+        android:layout_marginLeft="10dp"/>
 
     <CheckBox
         android:id="@+id/checkBox5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vào bếp nấu ăn" />
+        android:text="Vào bếp nấu ăn"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -108,13 +116,14 @@
         android:text="Sở thích khác" />
 
     <EditText
-        android:id="@+id/txtSoThich"
+        android:id="@+id/edtSoThich"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
         android:hint="Nhập sở thích khác"
-        android:text="" />
+        android:text=""
+        android:layout_marginLeft="5dp"/>
 
     <Button
         android:id="@+id/btnXN"
