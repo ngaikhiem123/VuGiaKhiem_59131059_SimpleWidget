@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup rdgGioiTinh;
     Button btnXN;
     DatePickerDialog.OnDateSetListener birthDay;
+    DatePickerDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addViews();
         addEvent();
+        makeDatePicker();
         addDateEvent();
     }
 
@@ -74,31 +76,31 @@ public class MainActivity extends AppCompatActivity {
         return s;
     }
 
-    private void addDateEvent() {
-        edtDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        MainActivity.this,
-                        birthDay,
-                        year, month, day);
-                //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
-        });
+    private void makeDatePicker() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
 
         birthDay = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 String s = day + "/" + (month + 1) + "/" + year;
                 edtDay.setText(s);
+                dialog.updateDate(year, month, day);
             }
         };
+
+        dialog = new DatePickerDialog(MainActivity.this, birthDay, year, month, day);
+    }
+
+    private void addDateEvent() {
+        edtDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
     }
 
     private String getGioiTinh() {
@@ -133,5 +135,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return s;
     }
-
 }
