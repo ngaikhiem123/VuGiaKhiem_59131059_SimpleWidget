@@ -2,25 +2,33 @@ package vn.edu.ntu.giakhiem.vugiakhiem_59131059_simplewidget;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText edtName, edtDay, edtSoThich;
     RadioGroup rdgGioiTinh;
     Button btnXN;
+    DatePickerDialog.OnDateSetListener birthDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addViews();
         addEvent();
+        addDateEvent();
     }
 
     private void addViews() {
@@ -43,24 +52,58 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String sName = getName();
+                String sDay = getDay();
                 String sGioiTinh = getGioiTinh();
                 String sSoThich = getSoThich();
 
-                String sKQ = sName + "\n" + sGioiTinh + "\nSở Thích: " + sSoThich;
+                String sKQ = sName + "\nNgày sinh: " + sDay + "\nGiới tính:" + sGioiTinh + "\nSở Thích: " + sSoThich;
                 Toast.makeText(getApplicationContext(), sKQ, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private String getName (){
+    private String getName() {
         String s = edtName.getText().toString();
         if (s.matches("")) s = "Chưa rõ họ tên";
         return s;
     }
 
-    private String getGioiTinh (){
+    private String getDay() {
+        String s = edtDay.getText().toString();
+        if (s.matches("")) s = "Chưa rõ";
+        return s;
+    }
+
+    private void addDateEvent() {
+        edtDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        MainActivity.this,
+                        birthDay,
+                        year, month, day);
+                //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        birthDay = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                String s = day + "/" + (month + 1) + "/" + year;
+                edtDay.setText(s);
+            }
+        };
+    }
+
+    private String getGioiTinh() {
         int selectedBtn = rdgGioiTinh.getCheckedRadioButtonId();
-        return "Giới tính: " + ((Button) findViewById(selectedBtn)).getText().toString();
+        return ((Button) findViewById(selectedBtn)).getText().toString();
     }
 
     private String getSoThich() {

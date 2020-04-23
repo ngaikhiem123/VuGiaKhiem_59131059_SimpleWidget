@@ -22,7 +22,7 @@
         android:inputType="textPersonName"
         android:hint="Nhập tên của bạn vào đây"
         android:text=""
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -35,10 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="date"
         android:hint="Nhập ngày sinh của bạn vào đây"
         android:text=""
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="5dp"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:text="Nam"
             android:layout_weight="1"
-            android:checked="true"/>
+            android:checked="true" />
 
         <RadioButton
             android:id="@+id/rbNu"
@@ -120,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:hint="Nhập sở thích khác"
         android:text=""
         android:layout_marginLeft="5dp"/>
